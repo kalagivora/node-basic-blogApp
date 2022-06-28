@@ -1,8 +1,8 @@
 <html lang="en">
-<%- include("./partials/head.ejs") %>
+<%- include("../partials/head.ejs") %>
 
 <body>
-  <%- include("./partials/nav.ejs") %>
+  <%- include("../partials/nav.ejs") %>
 
   <div class="detail">
     <h3><%= blog.title%></h3>
@@ -10,7 +10,7 @@
     <p><%= blog.body%></p>
     <a class="delete" data-delete="<%= blog._id %>">Delete</a>
   </div>
-  <%- include("./partials/footer.ejs") %>
+  <%- include("../partials/footer.ejs") %>
 </body>
 <script>
     const del = document.querySelector('a.delete');

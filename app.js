@@ -3,6 +3,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const blogRouters = require('./routes/blogRoutes')
+const authRouters = require('./routes/authRoutes')
 
 //set up app 
 const app = express()
@@ -35,7 +36,7 @@ app.use(express.urlencoded({extended: true}))
 
 app.get('/', (req,res)=> {
     res.redirect('/blogs')
-    res.render('index', {title: 'home', blogs: []})                         // to render ejs page
+    // res.render('index', {title: 'home', blogs: []})                         // to render ejs page
     // res.sendFile('./views/index.html', {root: __dirname})       //this automatically sets header and status code according to data 
 })
 
@@ -49,6 +50,8 @@ app.get('/about-me', (req,res)=> {
 })
 
 app.use('/blogs', blogRouters)
+
+app.use(authRouters)
 
 //will exe for every req if match not found till this point (top to bottom) position of this is imp
 app.use((req,res)=> {

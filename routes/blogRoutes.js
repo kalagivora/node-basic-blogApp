@@ -3,7 +3,7 @@ const router = express.Router();
 const Blog = require('../models/blogs');
 
 router.get('/create',(req,res)=>{
-    res.render('create', {title: 'create blog'})
+    res.render('blog/create', {title: 'create blog'})
 })
 
 router.get('/', (req,res)=>{
@@ -19,7 +19,7 @@ router.get('/:id', (req,res)=>{
     const id = req.params.id;
     Blog.findById(id)
         .then((result)=>{
-            res.render('details', {title: 'Blog detail', blog: result});
+            res.render('blog/details', {title: 'Blog detail', blog: result});
         }).catch((err)=>{
             res.status(404).render('404', { title: '404' })
         })
