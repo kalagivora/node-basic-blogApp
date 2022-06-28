@@ -1,0 +1,32 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="detail">
+    <h3><%= blog.title%></h3>
+    <p><%= blog.snippet%></p>
+    <p><%= blog.body%></p>
+    <a class="delete" data-delete="<%= blog._id %>">Delete</a>
+  </div>
+  <%- include("./partials/footer.ejs") %>
+</body>
+<script>
+    const del = document.querySelector('a.delete');
+    del.addEventListener('click',() =>{
+        const url = `/blogs/${del.dataset.delete}`;
+        fetch(url, {
+            method: 'DELETE'
+        })//we are getting result as json data redirect
+        .then(result => result.json())  //returns another promise
+        .then(data => {
+          window.location.href = data.redirect;
+          window.alert("Record deleted")
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    })
+</script>
+</html>
