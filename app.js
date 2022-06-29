@@ -33,6 +33,7 @@ app.use(express.static('public'))  //arg is folder name
 
 //middleware to encode data coming from req body
 app.use(express.urlencoded({extended: true}))
+app.use(express.json())
 
 app.get('/', (req,res)=> {
     res.redirect('/blogs')
